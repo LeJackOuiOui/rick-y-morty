@@ -3,11 +3,13 @@ import 'package:flutter/material.dart';
 class PersonajeCard extends StatelessWidget {
   final String nombre;
   final String imagen;
+  final String descripcion;
 
   const PersonajeCard({
     super.key,
     required this.nombre,
     required this.imagen,
+    required this.descripcion,
   });
 
   @override
@@ -44,14 +46,27 @@ class PersonajeCard extends StatelessWidget {
             ),
             Padding(
               padding: const EdgeInsets.all(6),
-              child: Text(
-                nombre,
-                textAlign: TextAlign.center,
-                style: const TextStyle(
-                  color: Colors.greenAccent,
-                  fontWeight: FontWeight.bold,
-                  fontSize: 12,
-                ),
+              child: Column(
+                children: [
+                  Text(
+                    nombre,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      color: Colors.greenAccent,
+                      fontWeight: FontWeight.bold,
+                      fontSize: 12,
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    descripcion,
+                    textAlign: TextAlign.center,
+                    style: const TextStyle(
+                      fontSize: 10,
+                      color: Colors.white70,
+                    ),
+                  ),
+                ],
               ),
             ),
           ],
