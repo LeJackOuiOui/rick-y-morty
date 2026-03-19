@@ -12,25 +12,50 @@ class PersonajeCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      margin: const EdgeInsets.all(8),
-      child: Column(
-        children: [
-          Expanded(
-            child: Image.network(
-              imagen,
-              fit: BoxFit.cover,
-              width: double.infinity,
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(8),
-            child: Text(
-              nombre,
-              textAlign: TextAlign.center,
-            ),
+    return Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.greenAccent.withOpacity(0.6),
+            blurRadius: 10,
+            spreadRadius: 1,
           ),
         ],
+      ),
+      child: Card(
+        color: const Color(0xFF1A1F2E),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(15),
+        ),
+        child: Column(
+          children: [
+            Expanded(
+              child: ClipRRect(
+                borderRadius: const BorderRadius.vertical(
+                  top: Radius.circular(15),
+                ),
+                child: Image.network(
+                  imagen,
+                  fit: BoxFit.cover,
+                  width: double.infinity,
+                ),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(6),
+              child: Text(
+                nombre,
+                textAlign: TextAlign.center,
+                style: const TextStyle(
+                  color: Colors.greenAccent,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 12,
+                ),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
