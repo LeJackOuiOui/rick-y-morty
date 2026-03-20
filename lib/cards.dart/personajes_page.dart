@@ -152,7 +152,6 @@ class PersonajesPage extends StatelessWidget {
         ),
       ),
 
-      // 🔥 AQUÍ ESTÁ EL CAMBIO
       body: Theme(
         data: Theme.of(context).copyWith(
           textTheme: const TextTheme(
@@ -215,6 +214,22 @@ class PersonajesPage extends StatelessWidget {
               ),
             ],
           ),
+        ),
+      ),
+
+      // 🔥 FOOTER NEÓN AGREGADO
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
+        color: const Color(0xFF0D0D0D),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            neonText("Multiverse Database", 14),
+            const SizedBox(height: 5),
+            neonText("Dimension C-137 | Status: Active", 12),
+            const SizedBox(height: 5),
+            neonText("© Interdimensional Rick Labs", 10),
+          ],
         ),
       ),
     );
