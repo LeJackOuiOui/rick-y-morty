@@ -1,17 +1,64 @@
-# rick_y_morty
+# 🛸 Rick y Morty App
 
-A new Flutter project.
+Aplicación Flutter que consume la API pública de Rick and Morty, permite explorar personajes, filtrarlos por estado y guardar favoritos con persistencia.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 🚀 Tecnologías
 
-A few resources to get you started if this is your first Flutter project:
+- Flutter
+- Provider (estado global)
+- SharedPreferences (persistencia)
+- Rick and Morty API
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📁 Estructura del proyecto
+
+```
+lib/
+├── main.dart
+├── models/
+│   └── personaje.dart
+├── services/
+│   └── api_service.dart
+├── provider/
+│   └── character_provider.dart
+├── screens/
+│   └── personajes_page.dart
+└── widgets/
+    └── personaje_card.dart
+```
+
+---
+
+## ⚙️ Instalación
+
+1. Clona el repositorio
+2. Instala las dependencias:
+
+```bash
+   flutter pub get
+```
+
+3. Corre la app:
+
+```bash
+   flutter run
+```
+
+---
+
+## 📸 Captura de pantalla
+
+![App funcionando](assets/screenshots/app.png)
+
+---
+
+## 🌿 Estrategia de ramas
+
+- `main` — producción, nunca se toca directamente
+- `develop` — integración de todo el trabajo
+- `feature/api` — consumo de la API
+- `feature/provider` — estado global
+- `feature/ui` — interfaz de usuario

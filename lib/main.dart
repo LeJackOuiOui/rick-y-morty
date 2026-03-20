@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
-import 'cards.dart/personajes_page.dart';
+import 'package:provider/provider.dart';
+import 'provider/character_provider.dart';
+import 'screens/personajes_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    ChangeNotifierProvider(
+      create: (_) => CharacterProvider(),
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -13,9 +20,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Rick y Morty',
-      theme: ThemeData(
-        scaffoldBackgroundColor: const Color(0xFF0B0F1A),
-      ),
+      theme: ThemeData(scaffoldBackgroundColor: const Color(0xFF0B0F1A)),
       home: const PersonajesPage(),
     );
   }
