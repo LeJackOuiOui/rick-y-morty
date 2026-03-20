@@ -117,7 +117,6 @@ class PersonajesPage extends StatelessWidget {
     int columnas = MediaQuery.of(context).size.width > 600 ? 4 : 2;
 
     return Scaffold(
-      // 🔥 HEADER CON LOGO ARRIBA
       appBar: PreferredSize(
         preferredSize: const Size.fromHeight(180),
         child: AppBar(
@@ -128,15 +127,11 @@ class PersonajesPage extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // 🔥 LOGO ARRIBA
                 Image.asset(
                   '../assets/logo.png',
                   height: 90,
                 ),
-
                 const SizedBox(height: 10),
-
-                // 🔥 TEXTO DEBAJO
                 const Text(
                   'Rick y Morty',
                   style: TextStyle(
@@ -157,56 +152,69 @@ class PersonajesPage extends StatelessWidget {
         ),
       ),
 
-      // 🧪 CONTENIDO
-      body: SingleChildScrollView(
-        child: Column(
-          children: [
-            const SizedBox(height: 10),
-
-            neonText("Personajes Principales", 18),
-
-            GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: PersonajesPage.principales.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: columnas,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 0.7,
-              ),
-              itemBuilder: (context, index) {
-                return PersonajeCard(
-                  nombre: PersonajesPage.principales[index]['nombre']!,
-                  imagen: PersonajesPage.principales[index]['imagen']!,
-                  descripcion: PersonajesPage.principales[index]['descripcion']!,
-                );
-              },
+      // 🔥 AQUÍ ESTÁ EL CAMBIO
+      body: Theme(
+        data: Theme.of(context).copyWith(
+          textTheme: const TextTheme(
+            bodyMedium: TextStyle(
+              color: Color(0xFF39FF14),
+              shadows: [
+                Shadow(blurRadius: 6, color: Color(0xFF39FF14)),
+                Shadow(blurRadius: 12, color: Color(0xFF00FFAA)),
+              ],
             ),
+          ),
+        ),
+        child: SingleChildScrollView(
+          child: Column(
+            children: [
+              const SizedBox(height: 10),
 
-            const SizedBox(height: 20),
+              neonText("Personajes Principales", 18),
 
-            neonText("Personajes Recurrentes", 18),
-
-            GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemCount: PersonajesPage.recurrentes.length,
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: columnas,
-                crossAxisSpacing: 10,
-                mainAxisSpacing: 10,
-                childAspectRatio: 0.7,
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: PersonajesPage.principales.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: columnas,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 0.7,
+                ),
+                itemBuilder: (context, index) {
+                  return PersonajeCard(
+                    nombre: PersonajesPage.principales[index]['nombre']!,
+                    imagen: PersonajesPage.principales[index]['imagen']!,
+                    descripcion: PersonajesPage.principales[index]['descripcion']!,
+                  );
+                },
               ),
-              itemBuilder: (context, index) {
-                return PersonajeCard(
-                  nombre: PersonajesPage.recurrentes[index]['nombre']!,
-                  imagen: PersonajesPage.recurrentes[index]['imagen']!,
-                  descripcion: PersonajesPage.recurrentes[index]['descripcion']!,
-                );
-              },
-            ),
-          ],
+
+              const SizedBox(height: 20),
+
+              neonText("Personajes Recurrentes", 18),
+
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                itemCount: PersonajesPage.recurrentes.length,
+                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: columnas,
+                  crossAxisSpacing: 10,
+                  mainAxisSpacing: 10,
+                  childAspectRatio: 0.7,
+                ),
+                itemBuilder: (context, index) {
+                  return PersonajeCard(
+                    nombre: PersonajesPage.recurrentes[index]['nombre']!,
+                    imagen: PersonajesPage.recurrentes[index]['imagen']!,
+                    descripcion: PersonajesPage.recurrentes[index]['descripcion']!,
+                  );
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
