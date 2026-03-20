@@ -152,79 +152,104 @@ class PersonajesPage extends StatelessWidget {
         ),
       ),
 
-      body: Theme(
-        data: Theme.of(context).copyWith(
-          textTheme: const TextTheme(
-            bodyMedium: TextStyle(
-              color: Color(0xFF39FF14),
-              shadows: [
-                Shadow(blurRadius: 6, color: Color(0xFF39FF14)),
-                Shadow(blurRadius: 12, color: Color(0xFF00FFAA)),
-              ],
+      // 🌀 BODY CON FONDO PORTAL
+      body: Stack(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              gradient: RadialGradient(
+                center: Alignment(0, -0.3),
+                radius: 1.2,
+                colors: [
+                  Color(0xFF39FF14),
+                  Color(0xFF00FFAA),
+                  Color(0xFF003B1F),
+                  Color(0xFF000000),
+                ],
+                stops: [0.0, 0.3, 0.7, 1.0],
+              ),
             ),
           ),
-        ),
-        child: SingleChildScrollView(
-          child: Column(
-            children: [
-              const SizedBox(height: 10),
 
-              neonText("Personajes Principales", 18),
-
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: PersonajesPage.principales.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: columnas,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  childAspectRatio: 0.7,
-                ),
-                itemBuilder: (context, index) {
-                  return PersonajeCard(
-                    nombre: PersonajesPage.principales[index]['nombre']!,
-                    imagen: PersonajesPage.principales[index]['imagen']!,
-                    descripcion: PersonajesPage.principales[index]['descripcion']!,
-                  );
-                },
-              ),
-
-              const SizedBox(height: 20),
-
-              neonText("Personajes Recurrentes", 18),
-
-              GridView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: PersonajesPage.recurrentes.length,
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: columnas,
-                  crossAxisSpacing: 10,
-                  mainAxisSpacing: 10,
-                  childAspectRatio: 0.7,
-                ),
-                itemBuilder: (context, index) {
-                  return PersonajeCard(
-                    nombre: PersonajesPage.recurrentes[index]['nombre']!,
-                    imagen: PersonajesPage.recurrentes[index]['imagen']!,
-                    descripcion: PersonajesPage.recurrentes[index]['descripcion']!,
-                  );
-                },
-              ),
-            ],
+          Container(
+            color: Colors.black.withOpacity(0.6),
           ),
-        ),
+
+          Theme(
+            data: Theme.of(context).copyWith(
+              textTheme: const TextTheme(
+                bodyMedium: TextStyle(
+                  color: Color(0xFF39FF14),
+                  shadows: [
+                    Shadow(blurRadius: 6, color: Color(0xFF39FF14)),
+                    Shadow(blurRadius: 12, color: Color(0xFF00FFAA)),
+                  ],
+                ),
+              ),
+            ),
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  const SizedBox(height: 10),
+
+                  neonText("Personajes Principales", 18),
+
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: PersonajesPage.principales.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: columnas,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 0.7,
+                    ),
+                    itemBuilder: (context, index) {
+                      return PersonajeCard(
+                        nombre: PersonajesPage.principales[index]['nombre']!,
+                        imagen: PersonajesPage.principales[index]['imagen']!,
+                        descripcion: PersonajesPage.principales[index]['descripcion']!,
+                      );
+                    },
+                  ),
+
+                  const SizedBox(height: 20),
+
+                  neonText("Personajes Recurrentes", 18),
+
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    itemCount: PersonajesPage.recurrentes.length,
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: columnas,
+                      crossAxisSpacing: 10,
+                      mainAxisSpacing: 10,
+                      childAspectRatio: 0.7,
+                    ),
+                    itemBuilder: (context, index) {
+                      return PersonajeCard(
+                        nombre: PersonajesPage.recurrentes[index]['nombre']!,
+                        imagen: PersonajesPage.recurrentes[index]['imagen']!,
+                        descripcion: PersonajesPage.recurrentes[index]['descripcion']!,
+                      );
+                    },
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
 
-      // 🔥 FOOTER NEÓN AGREGADO
+      // 🔥 FOOTER NEÓN
       bottomNavigationBar: Container(
         padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 10),
         color: const Color(0xFF0D0D0D),
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            neonText("Multiverse Database", 14),
+            neonText("Multiverse Database 🌀", 14),
             const SizedBox(height: 5),
             neonText("Dimension C-137 | Status: Active", 12),
             const SizedBox(height: 5),
