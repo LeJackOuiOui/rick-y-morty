@@ -37,6 +37,22 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
+  Widget neonText(String text, double size) {
+    return Text(
+      text,
+      style: TextStyle(
+        fontSize: size,
+        fontWeight: FontWeight.bold,
+        color: const Color(0xFF39FF14),
+        letterSpacing: 1.5,
+        shadows: const [
+          Shadow(blurRadius: 8, color: Color(0xFF39FF14)),
+          Shadow(blurRadius: 16, color: Color(0xFF00FFAA)),
+        ],
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,31 +62,19 @@ class _MyHomePageState extends State<MyHomePage> {
           backgroundColor: Colors.transparent,
           elevation: 0,
           flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              color: Color(0xFF0D0D0D), // 🌑 fondo oscuro
-            ),
+            color: const Color(0xFF0D0D0D),
             child: const Center(
               child: Text(
                 'Rick y Morty',
                 style: TextStyle(
                   fontSize: 42,
                   fontWeight: FontWeight.w900,
-                  color: Color(0xFF39FF14), // 🟢 verde neón
+                  color: Color(0xFF39FF14),
                   letterSpacing: 4,
                   shadows: [
-                    // ✨ glow fuerte
-                    Shadow(
-                      blurRadius: 10,
-                      color: Color(0xFF39FF14),
-                    ),
-                    Shadow(
-                      blurRadius: 20,
-                      color: Color(0xFF00FFAA),
-                    ),
-                    Shadow(
-                      blurRadius: 30,
-                      color: Color(0xFF39FF14),
-                    ),
+                    Shadow(blurRadius: 10, color: Color(0xFF39FF14)),
+                    Shadow(blurRadius: 20, color: Color(0xFF00FFAA)),
+                    Shadow(blurRadius: 30, color: Color(0xFF39FF14)),
                   ],
                 ),
               ),
@@ -78,6 +82,7 @@ class _MyHomePageState extends State<MyHomePage> {
           ),
         ),
       ),
+
       body: Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
@@ -96,7 +101,38 @@ class _MyHomePageState extends State<MyHomePage> {
           ],
         ),
       ),
-      backgroundColor: const Color(0xFF121212), // 🌑 fondo app oscuro
+
+      // 🔥 FOOTER PRO ESTILO RICK AND MORTY
+      bottomNavigationBar: Container(
+        padding: const EdgeInsets.symmetric(vertical: 15, horizontal: 20),
+        decoration: const BoxDecoration(
+          color: Color(0xFF0D0D0D),
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            neonText('Rick and Morty App', 16),
+            const SizedBox(height: 5),
+            neonText('Multiverse Explorer', 14),
+            const SizedBox(height: 10),
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                neonText('Seasons: 8', 12),
+                neonText('Dimension: C-137', 12),
+              ],
+            ),
+
+            const SizedBox(height: 8),
+
+            neonText('© 2026 Interdimensional Studios', 10),
+          ],
+        ),
+      ),
+
+      backgroundColor: const Color(0xFF121212),
+
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         backgroundColor: Colors.greenAccent,
