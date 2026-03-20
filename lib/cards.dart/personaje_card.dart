@@ -66,6 +66,7 @@ class PersonajeCard extends StatelessWidget {
                       color: Colors.white70,
                     ),
                   ),
+                  const SizedBox(height: 8),
                 ],
               ),
             ),
