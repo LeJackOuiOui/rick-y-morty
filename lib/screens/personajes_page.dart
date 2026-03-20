@@ -149,7 +149,7 @@ class _PersonajesPageState extends State<PersonajesPage> {
           titleSpacing: 16,
           title: Row(
             children: [
-              Image.asset('../assets/logo.png', height: 50),
+              Image.asset('../assets/images/logo.png', height: 50),
               const SizedBox(width: 16),
               const Text(
                 'Rick y Morty',
